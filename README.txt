@@ -1,16 +1,30 @@
-TOKO DIERA - Sistem Informasi POS (PHP Native + MySQL)
+TOKO DIERA - Sistem Informasi POS
+================================
 
-CARA INSTAL (XAMPP / Laragon):
-1. Salin folder ini ke htdocs (mis. C:\xampp\htdocs\toko_diera).
-2. Jalankan Apache & MySQL, buka phpMyAdmin > Import > pilih database.sql.
-3. Sesuaikan DB_USER/DB_PASS di config.php bila perlu.
-4. Buka http://localhost/toko_diera
+TEKNOLOGI
+- PHP Native
+- MySQL
+- HTML, CSS, dan JavaScript
 
-AKUN AWAL:  admin/admin123  |  kasir/kasir123  |  pemilik/pemilik123
-Pengguna baru lewat halaman Daftar berstatus "pending" dan baru bisa login setelah divalidasi admin (menu Data Pengguna).
+MENJALANKAN APLIKASI
+1. Salin folder proyek ke folder htdocs XAMPP, misalnya:
+   C:\xampp\htdocs\toko_diera
+2. Jalankan Apache dan MySQL dari XAMPP.
+3. Buka phpMyAdmin, lalu impor file database.sql.
+   Perhatian: file tersebut menghapus dan membuat ulang tabel aplikasi.
+4. Sesuaikan DB_USER dan DB_PASS di config.php jika pengaturan MySQL berbeda.
+5. Buka http://localhost/toko_diera di browser.
 
-HAK AKSES:
-- Admin   : kelola barang, pengguna (validasi akun), penjualan, retur (setujui/tolak)
-- Kasir   : lihat barang, transaksi + cetak struk, pengajuan retur
-- Pemilik : laporan penjualan, stok, retur
-Logout memakai dialog konfirmasi. Butuh PHP 7.4+ (disarankan 8+).
+AKUN CONTOH
+- Admin:   admin / admin123
+- Kasir:   kasir / kasir123
+- Pemilik: pemilik / pemilik123
+
+Pengguna baru yang mendaftar menunggu validasi admin sebelum dapat login.
+
+HAK AKSES
+- Admin: mengelola barang, pengguna, penjualan, dan retur.
+- Kasir: melihat barang, membuat transaksi, mencetak struk, dan mengajukan retur.
+- Pemilik: melihat laporan penjualan, stok, dan retur.
+
+Baca README.md untuk panduan struktur file dan cara menjelaskan alur aplikasi.

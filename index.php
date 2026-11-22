@@ -1,1 +1,9 @@
-<?php require 'config.php'; redirect(empty($_SESSION['u']) ? 'katalog.php' : 'dashboard.php');
+<?php
+require 'config.php';
+
+// Arahkan pengguna ke halaman awal sesuai status login.
+if (empty($_SESSION['u'])) {
+    redirect('katalog.php');
+}
+
+redirect('dashboard.php');

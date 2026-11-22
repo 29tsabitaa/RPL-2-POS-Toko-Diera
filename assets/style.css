@@ -1,33 +1,524 @@
-*{box-sizing:border-box}body{margin:0;font-family:Segoe UI,Arial,sans-serif;background:#f1f5fb;color:#1e293b;font-size:14px}
-a{color:#1d4ed8;text-decoration:none}h1{margin:0 0 4px;font-size:22px}.crumb{color:#64748b;margin-bottom:16px}
-.side{position:fixed;left:0;top:0;bottom:0;width:220px;background:#0a2a66;color:#fff;display:flex;flex-direction:column;z-index:20}
-.brand{padding:18px;font-weight:700;font-size:16px;background:#082056}.side nav{flex:1;padding:10px}
-.side nav a,.btn-logout{display:block;color:#dbe6ff;padding:11px 12px;border-radius:8px;margin-bottom:4px}
-.side nav a.on,.side nav a:hover{background:#1d5fd6;color:#fff}.btn-logout{margin:10px}
-.main{margin-left:220px;min-height:100vh;display:flex;flex-direction:column}
-.top{background:#0a2a66;color:#fff;padding:12px 20px;display:flex;justify-content:space-between;align-items:center}
-.burger{display:none;background:none;border:0;color:#fff;font-size:22px}
-main{padding:22px;flex:1}footer{text-align:center;color:#64748b;padding:14px;font-size:12px}
-.card{background:#fff;border-radius:10px;padding:18px;box-shadow:0 1px 4px #0001;margin-bottom:16px}
-.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
-.stat small{color:#64748b}.stat b{display:block;font-size:22px;margin-top:4px}
-table{width:100%;border-collapse:collapse}th,td{padding:9px 8px;text-align:left;border-bottom:1px solid #e5eaf3}
-th{background:#f1f5fb;font-size:12px}.table-wrap{overflow-x:auto}
-input,select,textarea{width:100%;padding:9px 10px;border:1px solid #cbd5e1;border-radius:7px;font:inherit;background:#fff}
-label{display:block;font-weight:600;margin:10px 0 4px}
-.btn{display:inline-block;background:#1d5fd6;color:#fff;border:0;padding:9px 16px;border-radius:7px;cursor:pointer;font:inherit;font-weight:600}
-.btn.gray{background:#e2e8f0;color:#334155}.btn.red{background:#dc2626}.btn.green{background:#16a34a}.btn.sm{padding:5px 10px;font-size:12px}
-.row{display:flex;gap:10px;flex-wrap:wrap;align-items:flex-end}.row>*{flex:1;min-width:140px}.row .btn{flex:0 0 auto}
-.alert{padding:10px 14px;border-radius:8px;margin-bottom:14px}.alert.ok{background:#dcfce7;color:#166534}.alert.err{background:#fee2e2;color:#991b1b}
-.badge{padding:3px 9px;border-radius:99px;font-size:12px;font-weight:600}.b-aktif,.b-disetujui{background:#dcfce7;color:#166534}.b-pending,.b-diajukan{background:#fef9c3;color:#854d0e}.b-ditolak{background:#fee2e2;color:#991b1b}
-.pos{display:grid;grid-template-columns:1fr 280px;gap:16px}.big{font-size:26px;font-weight:700;color:#0a2a66}
-.qty{display:flex;align-items:center;gap:4px}.qty input{width:50px;text-align:center}.qty button{width:26px;height:30px}
-.modal{position:fixed;inset:0;background:#0007;display:none;align-items:center;justify-content:center;z-index:50}.modal.show{display:flex}
-.modal .box{background:#fff;border-radius:12px;padding:26px;text-align:center;width:320px}.modal .q{width:56px;height:56px;border:3px solid #1d5fd6;color:#1d5fd6;border-radius:50%;font-size:30px;margin:0 auto 10px;line-height:50px}
-.modal .act{display:flex;gap:10px;justify-content:center;margin-top:16px}
-.auth{min-height:100vh;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#0a2a66,#1d5fd6);padding:16px}
-.auth .card{width:380px;padding:28px}.auth h2{margin:0 0 4px}.auth .logo{color:#fff;text-align:center;font-size:24px;font-weight:700;margin-bottom:14px}
-.tabs a{display:inline-block;padding:8px 14px;border-radius:7px;background:#e2e8f0;color:#334155;margin-right:6px}.tabs a.on{background:#1d5fd6;color:#fff}
-.bar{height:10px;background:#1d5fd6;border-radius:5px}
-@media(max-width:800px){.side{transform:translateX(-100%)}.side.show{transform:none}.main{margin-left:0}.burger{display:block}.pos{grid-template-columns:1fr}}
-@media print{.side,.top,.noprint,footer{display:none!important}.main{margin:0}main{padding:0}.card{box-shadow:none}}
+/* Gaya dasar yang digunakan di seluruh halaman. */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Segoe UI, Arial, sans-serif;
+    background: #f1f5fb;
+    color: #1e293b;
+    font-size: 14px;
+}
+
+a {
+    color: #1d4ed8;
+    text-decoration: none;
+}
+
+h1 {
+    margin: 0 0 4px;
+    font-size: 22px;
+}
+
+.crumb {
+    color: #64748b;
+    margin-bottom: 16px;
+}
+
+/* Navigasi dan kerangka halaman internal. */
+.side {
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 220px;
+    background: #0a2a66;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    z-index: 20;
+}
+
+.brand {
+    padding: 10px 12px;
+    font-weight: 700;
+    font-size: 14px;
+    background: #082056;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.brand img {
+    width: 38px;
+    height: 38px;
+    flex: 0 0 38px;
+    object-fit: contain;
+    border-radius: 50%;
+    background: #fff;
+}
+
+.brand span {
+    line-height: 1.1;
+}
+
+.side nav a,
+.btn-logout {
+    display: block;
+    color: #dbe6ff;
+    padding: 11px 12px;
+    border-radius: 8px;
+    margin-bottom: 4px;
+}
+
+.side nav a.on,
+.side nav a:hover {
+    background: #1d5fd6;
+    color: #fff;
+}
+
+.btn-logout {
+    margin: 10px;
+}
+
+.main {
+    margin-left: 220px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.top {
+    background: #0a2a66;
+    color: #fff;
+    padding: 12px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.burger {
+    display: none;
+    background: none;
+    border: 0;
+    color: #fff;
+    font-size: 22px;
+}
+
+main {
+    padding: 22px;
+    flex: 1;
+}
+
+footer {
+    text-align: center;
+    color: #64748b;
+    padding: 14px;
+    font-size: 12px;
+}
+
+/* Kartu, ringkasan, tabel, dan elemen formulir. */
+.card {
+    background: #fff;
+    border-radius: 10px;
+    padding: 18px;
+    box-shadow: 0 1px 4px #0001;
+    margin-bottom: 16px;
+}
+
+.grid {
+    display: grid;
+    gap: 14px;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.stat small {
+    color: #64748b;
+}
+
+.stat b {
+    display: block;
+    font-size: 22px;
+    margin-top: 4px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    padding: 9px 8px;
+    text-align: left;
+    border-bottom: 1px solid #e5eaf3;
+}
+
+th {
+    background: #f1f5fb;
+    font-size: 12px;
+}
+
+.table-wrap {
+    overflow-x: auto;
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+    padding: 9px 10px;
+    border: 1px solid #cbd5e1;
+    border-radius: 7px;
+    font: inherit;
+    background: #fff;
+}
+
+label {
+    display: block;
+    font-weight: 600;
+    margin: 10px 0 4px;
+}
+
+.btn {
+    display: inline-block;
+    background: #1d5fd6;
+    color: #fff;
+    border: 0;
+    padding: 9px 16px;
+    border-radius: 7px;
+    cursor: pointer;
+    font: inherit;
+    font-weight: 600;
+}
+
+.btn.gray {
+    background: #e2e8f0;
+    color: #334155;
+}
+
+.btn.red {
+    background: #dc2626;
+}
+
+.btn.green {
+    background: #16a34a;
+}
+
+.btn.sm {
+    padding: 5px 10px;
+    font-size: 12px;
+}
+
+.row {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    align-items: flex-end;
+}
+
+.row > * {
+    flex: 1;
+    min-width: 140px;
+}
+
+.row .btn {
+    flex: 0 0 auto;
+}
+
+.alert {
+    padding: 10px 14px;
+    border-radius: 8px;
+    margin-bottom: 14px;
+}
+
+.alert.ok {
+    background: #dcfce7;
+    color: #166534;
+}
+
+.alert.err {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+/* Label status pada data pengguna, barang, dan retur. */
+.badge {
+    padding: 3px 9px;
+    border-radius: 99px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.b-aktif,
+.b-disetujui {
+    background: #dcfce7;
+    color: #166534;
+}
+
+.b-pending,
+.b-diajukan {
+    background: #fef9c3;
+    color: #854d0e;
+}
+
+.b-ditolak {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+/* Komponen keranjang kasir dan dialog konfirmasi. */
+.pos {
+    display: grid;
+    grid-template-columns: 1fr 280px;
+    gap: 16px;
+}
+
+.big {
+    font-size: 26px;
+    font-weight: 700;
+    color: #0a2a66;
+}
+
+.qty {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.qty input {
+    width: 50px;
+    text-align: center;
+}
+
+.qty button {
+    width: 26px;
+    height: 30px;
+}
+
+.modal {
+    position: fixed;
+    inset: 0;
+    background: #0007;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 50;
+}
+
+.modal.show {
+    display: flex;
+}
+
+.modal .box {
+    background: #fff;
+    border-radius: 12px;
+    padding: 26px;
+    text-align: center;
+    width: 320px;
+}
+
+.modal .q {
+    width: 56px;
+    height: 56px;
+    border: 3px solid #1d5fd6;
+    color: #1d5fd6;
+    border-radius: 50%;
+    font-size: 30px;
+    margin: 0 auto 10px;
+    line-height: 50px;
+}
+
+.modal .act {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 16px;
+}
+
+/* Panel autentikasi dan logo pada halaman login serta daftar. */
+.auth {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #0a2a66, #1d5fd6);
+    padding: 16px;
+}
+
+.auth .card {
+    width: 380px;
+    padding: 28px;
+}
+
+.auth h2 {
+    margin: 0 0 4px;
+}
+
+.auth .logo {
+    color: #fff;
+    text-align: center;
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 14px;
+}
+
+.auth .logo img {
+    width: 120px;
+    height: 120px;
+    object-fit: contain;
+    border-radius: 50%;
+    background: #fff;
+    padding: 4px;
+    margin-bottom: -6px;
+}
+
+.login-layout {
+    display: flex;
+    width: min(920px, 100%);
+    overflow: hidden;
+    background: #fff;
+    border-radius: 22px;
+    box-shadow: 0 24px 70px #06183d55;
+}
+
+.login-brand {
+    flex: 0 0 42%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 38px 28px;
+    text-align: center;
+    background: linear-gradient(145deg, #edf6ff, #d8eaff);
+}
+
+.login-brand img {
+    display: block;
+    width: 170px;
+    height: 170px;
+    max-width: 100%;
+    object-fit: contain;
+    border-radius: 50%;
+    background: #fff;
+    padding: 3px;
+}
+
+.login-brand h2 {
+    margin: 18px 0 4px;
+    color: #0a2a66;
+    font-size: 20px;
+}
+
+.login-brand p {
+    margin: 0;
+    color: #526984;
+    line-height: 1.5;
+}
+
+.auth .login-layout .card {
+    flex: 1;
+    width: auto;
+    margin: 0;
+    padding: 42px;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+/* Navigasi tambahan pada halaman laporan. */
+.tabs a {
+    display: inline-block;
+    padding: 8px 14px;
+    border-radius: 7px;
+    background: #e2e8f0;
+    color: #334155;
+    margin-right: 6px;
+}
+
+.tabs a.on {
+    background: #1d5fd6;
+    color: #fff;
+}
+
+.bar {
+    height: 10px;
+    background: #1d5fd6;
+    border-radius: 5px;
+}
+
+/* Tata letak menyesuaikan layar tablet dan ponsel. */
+@media (max-width: 800px) {
+    .side {
+        transform: translateX(-100%);
+    }
+
+    .side.show {
+        transform: none;
+    }
+
+    .main {
+        margin-left: 0;
+    }
+
+    .burger {
+        display: block;
+    }
+
+    .pos {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    .login-layout {
+        flex-direction: column;
+        border-radius: 18px;
+    }
+
+    .login-brand {
+        flex-basis: auto;
+        padding: 20px;
+    }
+
+    .login-brand img {
+        width: 100px;
+        height: 100px;
+    }
+
+    .login-brand h2 {
+        margin: 8px 0 2px;
+        font-size: 17px;
+    }
+
+    .login-brand p {
+        font-size: 12px;
+    }
+
+    .auth .login-layout .card {
+        width: auto;
+        padding: 26px 24px;
+    }
+}
+
+/* Sembunyikan navigasi saat halaman dicetak. */
+@media print {
+    .side,
+    .top,
+    .noprint,
+    footer {
+        display: none !important;
+    }
+
+    .main {
+        margin: 0;
+    }
+
+    main {
+        padding: 0;
+    }
+
+    .card {
+        box-shadow: none;
+    }
+}
